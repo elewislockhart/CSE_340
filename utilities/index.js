@@ -65,7 +65,7 @@ const money = new Intl.NumberFormat('en-US', {
 });
 
 /* **************************************
-* Build the classification view HTML
+* Build the item details view HTML
 * ************************************ */
 Util.buildInventoryDisplay = async function(data){
   let grid
@@ -90,5 +90,21 @@ Util.buildInventoryDisplay = async function(data){
   }
   return grid
 }
+
+/* **************************************
+* Build error page view HTML
+* ************************************ */
+Util.buildErrorPage = async function(){
+  let grid = '<p>The Error route is connected correctly.</p>'
+  return grid
+}
+
+/* ****************************************
+ * Middleware For Handling Errors
+ * Wrap other function in this for 
+ * General Error Handling
+ **************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
 
 module.exports = Util;

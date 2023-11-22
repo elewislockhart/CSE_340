@@ -284,13 +284,14 @@ margin-top: 25px;
   font-weight: 800;
 }
 
-p:nth-child(even) {
+.general-information p:nth-child(even) {
   background-color: #eee;
 }
 
 /* footer */
 footer {
   font-size: 0.8em;
+  padding: 8px;
 }
 
 .copyright {
