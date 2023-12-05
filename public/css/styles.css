@@ -2,6 +2,19 @@
   box-sizing: border-box;
 }
 
+input:required:invalid, input:focus:invalid {
+  background-color: rgb(255, 242, 242);
+  border: none;
+  outline: 0.5px solid rgb(255, 94, 94);
+  border-radius: 5px;
+}
+
+input:required:valid {
+  background-color: ivory;
+  outline: none;
+}
+ 
+
 body {
   font-family: 'Lucida Grande', Arial, sans-serif;
   font-size: 1.5em;
@@ -286,6 +299,82 @@ margin-top: 25px;
 
 .general-information p:nth-child(even) {
   background-color: #eee;
+}
+
+.notice {
+  list-style-type: circle;
+  color: rgba(189, 0, 0, 0.897);
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+}
+
+.notice li {
+  font-size: 0.7em;
+  margin: 16px;
+  width: 100%;
+}
+
+/* login / register */
+.login-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-div {
+  border-radius: 12px;
+  margin-top: 20px;
+  padding: 18px;
+  width: 90%;
+  max-width: 590px;
+  background-color: #4c96d7;
+}
+
+.account-label {
+  font-size: 0.6em;
+  color: white;
+}
+
+.no-account {
+  font-size: 0.6em;
+  margin-bottom: 8px;
+  color: white;
+  width: 180px;
+  text-align: center;
+}
+
+.no-account a {
+  color: white;
+}
+
+.button-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#account-form button {
+  border-radius: 15px;
+  padding: 4px;
+  width: 80px;
+  border: none;
+  background-color: white;
+  margin: 12px;
+  font-weight: 800;
+}
+
+#account-form input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+#pw-span {
+  font-size: 0.5em;
+  color: white;
 }
 
 /* footer */

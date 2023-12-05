@@ -7,7 +7,7 @@ async function getClassifications() {
     try {
         return await pool.query("SELECT * FROM public.classification ORDER BY classification_name")
     } catch (error) {
-        console.error("getClassifications error " + error)
+        console.error("***** getClassifications error: " + error)
     }
 }
 
@@ -25,7 +25,7 @@ async function getInventoryByClassificationId(classification_id) {
         )
         return data.rows
     } catch (error) {
-        console.error("getclassificationsbyid error " + error)
+        console.error("***** getclassificationsbyid error: " + error)
     }
 }
 
@@ -40,8 +40,39 @@ async function getInventoryByInventoryId(inventoryId) {
         )
         return data.rows
     } catch (error) {
-        console.error("getInventoryItemById error " + error)
+        console.error("***** getInventoryItemById error: " + error)
     }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInventoryId};
+/* ***************************
+ *  Add new classification
+ * ************************** */
+async function addNewClassification(classification_name) {
+    try {
+        const data = await pool.query(
+        `INSERT INTO classification (classification_name) VALUES ($1) RETURNING *`,
+        [classification_name]
+        )
+        return data.rows
+    } catch (error) {
+        console.error("***** addNewClassification error: " + error)
+    }
+}
+
+/* ***************************
+ * Check for classification in db
+ * ************************** */
+async function checkForClassification(classification_name) {
+    try {
+        const data = await pool.query(
+            `SELECT * FROM classification WHERE classification_name = $1`,
+            [classification_name]
+        )
+        return data.rowCount
+    } catch (error) {
+        return error.message
+    }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, 
+    getInventoryByInventoryId, addNewClassification, checkForClassification};
